@@ -29,8 +29,6 @@ def main():
         html = get_html(url_len)
         soup = BeautifulSoup(html, 'html.parser')
         picture_url = soup.find(id='screenshot-image')['src']
-        if not "https:" in picture_url:
-            picture_url = 'https:'+picture_url
         if picture_url[40:] == '':
             with urllib.request.urlopen(picture_url) as urll:
                 out = open("download/"+picture_url[-11:], 'wb')
